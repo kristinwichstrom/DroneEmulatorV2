@@ -25,11 +25,16 @@ public class BroadcastServer implements Runnable {
         this.broadcast = broadcast;
     }
 
-    public void broadcastLoop() throws InterruptedException {
-        Thread.sleep(3000);
-        if (broadcast == true)
-            broadcastMessage(message);
-
+    public void broadcastLoop() {
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (broadcast == true)
+                broadcastMessage(message);
+        }
     }
     /*
      Method is used for broadcasting message on network
@@ -59,10 +64,6 @@ public class BroadcastServer implements Runnable {
      */
     @Override
     public void run() {
-        try {
-            broadcastLoop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        broadcastLoop();
     }
 }
