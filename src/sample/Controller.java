@@ -11,4 +11,10 @@ public class Controller {
     public void toggleBtnBroadcast(ActionEvent actionEvent) {
         System.out.println("Toggle Broadcast button");
     }
+    public void clearTable (){
+        System.out.println("Clear table is pressed");
+    }
+    public void pressCircle () {
+        System.out.println("Circle is pressed");
+    }
 }

@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="539.0" prefWidth="175.0" style="-fx-background-color: D8E2FA;">
          <children>
-            <Button layoutX="52.0" layoutY="121.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
+            <Button fx:id="pressCircle" layoutX="52.0" layoutY="121.0" mnemonicParsing="false" onAction="#pressCircle" prefHeight="78.0" prefWidth="79.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="CRCL" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font></Button>
@@ -23,12 +23,12 @@
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font>
             </Label>
-            <Button layoutX="51.0" layoutY="218.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
+            <Button layoutX="52.0" layoutY="362.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font>
             </Button>
-            <Button layoutX="50.0" layoutY="313.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
+            <Button layoutX="51.0" layoutY="441.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font>
@@ -42,16 +42,11 @@
                   <Font name="Helvetica Neue Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="405.0" layoutY="475.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="71.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="CLEAR" textFill="#3f5b8f">
-               <font>
-                  <Font name="Helvetica Neue Bold" size="12.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="668.0" prefHeight="539.0" prefWidth="293.0" style="-fx-background-color: #FEEFA2;">
          <children>
-            <TableView layoutX="9.0" layoutY="49.0" prefHeight="389.0" prefWidth="274.0" style="-fx-background-color: #EBEBEB; -fx-background-radius: 30 30 30 30;">
+            <TableView layoutX="9.0" layoutY="29.0" prefHeight="389.0" prefWidth="274.0" style="-fx-background-color: #EBEBEB; -fx-background-radius: 30 30 30 30;">
               <columns>
                 <TableColumn prefWidth="75.0" style="-fx-background-radius: 30 30 30 30; -fx-background-color: #A9D9F9;" text="DATE" />
                 <TableColumn prefWidth="75.0" style="-fx-background-color: #A9D9F9; -fx-background-radius: 30 30 30 30;" text="MESSAGE" />
@@ -63,36 +58,41 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </opaqueInsets>
             </TableView>
-            <ToggleButton fx:id="toggleBtnDrone" layoutX="233.0" layoutY="453.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="32.0" prefWidth="38.0" style="-fx-background-color: #4073E7; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
+            <ToggleButton fx:id="toggleBtnDrone" layoutX="244.0" layoutY="457.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="32.0" prefWidth="38.0" style="-fx-background-color: #4073E7; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="toggleBtnBroadcast" layoutX="233.0" layoutY="490.0" mnemonicParsing="false" onAction="#toggleBtnBroadcast" prefHeight="32.0" prefWidth="39.0" style="-fx-background-color: #4073E7; -fx-background-radius: 20 20 20 20;" text="ON" textFill="WHITE">
+            <ToggleButton fx:id="toggleBtnBroadcast" layoutX="244.0" layoutY="494.0" mnemonicParsing="false" onAction="#toggleBtnBroadcast" prefHeight="32.0" prefWidth="39.0" style="-fx-background-color: #4073E7; -fx-background-radius: 20 20 20 20;" text="ON" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </ToggleButton>
-            <Label layoutX="30.0" layoutY="460.0" text="Drone Server port:">
+            <Label layoutX="41.0" layoutY="464.0" text="Drone Server port:">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="134.0" layoutY="461.0" text="127.0.0.1">
+            <Label layoutX="145.0" layoutY="465.0" text="127.0.0.1">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="190.0" layoutY="461.0" text="7007">
+            <Label layoutX="201.0" layoutY="465.0" text="7007">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="79.0" layoutY="498.0" text="Broadcast on port:">
+            <Label layoutX="90.0" layoutY="502.0" text="Broadcast on port:">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="189.0" layoutY="499.0" text="7000">
+            <Label layoutX="200.0" layoutY="503.0" text="7000">
                <font>
                   <Font size="11.0" />
                </font></Label>
+            <Button fx:id="clearTable" layoutX="23.0" layoutY="427.0" mnemonicParsing="false" onAction="#clearTable" prefHeight="20.0" prefWidth="45.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="CLEAR" textFill="#3f5b8f">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="9.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
