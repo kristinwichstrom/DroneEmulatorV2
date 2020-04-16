@@ -4,6 +4,10 @@ import javafx.event.ActionEvent;
 
 public class Controller {
 
+    public void initBroadcastServer(){
+
+    }
+
     public void toggleBtnDrone(ActionEvent actionEvent) {
         System.out.println("toggle Drone button");
     }
