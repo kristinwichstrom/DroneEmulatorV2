@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Font;
@@ -46,14 +47,18 @@ public class Controller {
         System.out.println("Toggle Broadcast button");
     }
 
-    public void clearTable (ActionEvent actionEvent) {
+    public void clearTable () {
         inputLogTable.getItems().clear();
     }
-
+    public void buttonCircle(ActionEvent actionEvent) {
+        System.out.println("Circle button");
+        GraphicsContext
+    }
 
     public void handleMessage(Message message){
         if (inputLogTable != null){
             inputLogTable.getItems().add(0, message);
         }
     }
+
 }

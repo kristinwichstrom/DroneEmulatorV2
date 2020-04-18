@@ -8,7 +8,6 @@ public class Message {
     private String logTime;
     private String message;
 
-
     public Message(String message){
         /*
          Formatter: converts data into a String.
