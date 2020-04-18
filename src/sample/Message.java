@@ -13,7 +13,7 @@ public class Message {
         /*
          Formatter: converts data into a String.
          */
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         /*
         Gets current time
          */
@@ -22,7 +22,6 @@ public class Message {
         Uses the formatter: to set current time to a string
          */
         logTime = formatter.format(currentTime);
-
 
         this.message = message;
 
@@ -34,7 +33,6 @@ public class Message {
         this(new String(message, 0, length));
     }
 
-
     public String getMessage() {
         return message;
     }
@@ -44,6 +42,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "LogTime:: " + logTime + " Message:: " + message;
+        return "LogTime: " + logTime + " Message: " + message;
     }
 }

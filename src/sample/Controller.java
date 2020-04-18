@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.text.Font;
 
 public class Controller {
 
@@ -14,6 +15,7 @@ public class Controller {
     TableView<Message> inputLogTable;
     @FXML
     ToggleButton toggleBtnDrone;
+
 
     private UdpReceiver udpReceiver;
 
@@ -43,6 +45,11 @@ public class Controller {
     public void toggleBtnBroadcast(ActionEvent actionEvent) {
         System.out.println("Toggle Broadcast button");
     }
+
+    public void clearTable (ActionEvent actionEvent) {
+        inputLogTable.getItems().clear();
+    }
+
 
     public void handleMessage(Message message){
         if (inputLogTable != null){
