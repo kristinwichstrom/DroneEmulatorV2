@@ -7,64 +7,46 @@ import javafx.scene.control.ToggleButton;
 
 public class Controller {
 
+    /*
+    our FXML elements we need to grab.
+     */
     @FXML
-    TableView<Messages> table;
+    TableView<Message> inputLogTable;
     @FXML
     ToggleButton toggleBtnDrone;
-    @FXML
-    ToggleButton toggleBtnBroadcast;
 
-    private UdpConnector udpConnector;
-    private BroadcastServer broadcastServer;
+    private UdpReceiver udpReceiver;
 
-    //Method creates an instance of the BroadcastServer class and starts a thread for the clas
+    public Controller (){
+        udpReceiver = new UdpReceiver(this);
+        new Thread(udpReceiver).start();
+    }
 
     public void toggleBtnDrone(ActionEvent actionEvent) {
-        System.out.println("toggle Drone button");
-        if (udpConnector.isReceiveMessages()){
-
-            udpConnector.setReceiveMessages(false);
+        System.out.println("Toggle Drone button");
+        if (udpReceiver.isReceiveMessages()){
+            /*
+            Kill udpReceiver thread
+             */
+            udpReceiver.setReceiveMessages(false);
             toggleBtnDrone.setText("OFF");
-        } else
-            startUdpConnection();
-        toggleBtnDrone.setText("ON");
+        } else {
+            /*
+            Start udpReceiver thread
+             */
+            udpReceiver.setReceiveMessages(true);
+            new Thread(udpReceiver).start();
+            toggleBtnDrone.setText("ON");
+        }
     }
 
     public void toggleBtnBroadcast(ActionEvent actionEvent) {
         System.out.println("Toggle Broadcast button");
-        if
     }
 
-    public void clearTable() {
-        System.out.println("Clear table is pressed");
-    }
-
-    public void pressCircle() {
-        System.out.println("Circle is pressed");
-    }
-    public void handleMessages () {
-        //Updating table
-    }
-    public void initialize()
-    {
-        System.out.println("Initialize broadcasting");
-
-        startUdpConnection();
-        startBroadcasting();
-    }
-    private void startBroadcasting() {
-        broadcastServer = new BroadcastServer();
-        new Thread(broadcastServer).start();
-    }
-
-    private void startUdpConnection() {
-        if (udpConnector != null) udpConnector.closeSocket();
-        udpConnector = new UdpConnector(this);
-        new Thread(udpConnector).start();
-    }
-
-    public void receiveMessage(Messages udpMessage)
-    {
-        table.getItems().add(0, udpMessage);
+    public void handleMessage(Message message){
+        if (inputLogTable != null){
+            inputLogTable.getItems().add(0, message);
+        }
     }
 }
