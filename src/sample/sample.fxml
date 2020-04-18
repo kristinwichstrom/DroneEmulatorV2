@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="539.0" prefWidth="175.0" style="-fx-background-color: D8E2FA;">
          <children>
-            <Button layoutX="44.0" layoutY="121.0" mnemonicParsing="false" onAction="#buttonCircle" prefHeight="87.0" prefWidth="90.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 90 90 90 90;" text="CIRCLE" textFill="WHITE">
+            <Button fx:id="btnCircle" layoutX="44.0" layoutY="121.0" mnemonicParsing="false" onAction="#selectCircle" prefHeight="87.0" prefWidth="90.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 90 90 90 90;" text="CIRCLE" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font></Button>
@@ -24,23 +25,24 @@
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font>
             </Label>
-            <Button layoutX="53.0" layoutY="356.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
+            <Button fx:id="btnSquare" layoutX="49.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectSquare" prefHeight="73.0" prefWidth="80.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 0 0 0 0;" text="SQUARE" textFill="WHITE">
                <font>
-                  <Font name="Helvetica Neue Bold" size="17.0" />
+                  <Font name="Helvetica Neue Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="52.0" layoutY="451.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="BTN" textFill="WHITE">
-               <font>
-                  <Font name="Helvetica Neue Bold" size="17.0" />
-               </font>
-            </Button>
+            <ColorPicker layoutX="25.0" layoutY="389.0" prefHeight="40.0" prefWidth="132.0" promptText="Pick color" style="-fx-background-color: #FEEFA2; -fx-background-radius: 10 10 10 10;" />
          </children></AnchorPane>
       <AnchorPane layoutX="175.0" layoutY="-1.0" prefHeight="540.0" prefWidth="495.0" style="-fx-background-color: #E2E2E2;">
          <children>
-            <Canvas height="415.0" layoutX="50.0" layoutY="66.0" width="419.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="28.0" text="DRONE CONTROLLER" textFill="#619ed7">
+            <Canvas fx:id="canvas" height="415.0" layoutX="50.0" layoutY="66.0" width="419.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="28.0" text="DRONE SIMULATOR" textFill="#619ed7">
                <font>
                   <Font name="Helvetica Neue Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="buttonDroneOff" alignment="CENTER" layoutX="19.0" layoutY="493.0" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 10 10 10 10;" text="DRONE OFF" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="10.0" />
                </font>
             </Label>
          </children>
@@ -67,12 +69,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <ToggleButton fx:id="toggleBtnDrone" layoutX="235.0" layoutY="473.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #4073E7; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
+            <ToggleButton fx:id="toggleBtnDrone" layoutX="235.0" layoutY="473.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="toggleBtnBroadcast" layoutX="235.0" layoutY="505.0" mnemonicParsing="false" onAction="#toggleBtnBroadcast" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #4073E7; -fx-background-radius: 20 20 20 20;" text="ON" textFill="WHITE">
+            <ToggleButton fx:id="toggleBtnBroadcast" layoutX="235.0" layoutY="505.0" mnemonicParsing="false" onAction="#toggleBtnBroadcast" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 20 20 20 20;" text="ON" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
@@ -102,7 +104,7 @@
                   <Font name="Helvetica Neue Bold" size="12.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="24.0" prefHeight="25.0" prefWidth="275.0" style="-fx-background-color: #FEBFB6; -fx-background-radius: 20 20 0 0;" text="Input drone controller">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="24.0" prefHeight="25.0" prefWidth="274.0" style="-fx-background-color: #FEBFB6; -fx-background-radius: 20 20 0 0;" text="Input drone controller">
                <font>
                   <Font name="Helvetica Neue Bold" size="13.0" />
                </font>

@@ -2,7 +2,9 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Font;
@@ -16,9 +18,22 @@ public class Controller {
     TableView<Message> inputLogTable;
     @FXML
     ToggleButton toggleBtnDrone;
+    @FXML
+    Canvas canvas;
+    @FXML
+    Button btnCircle;
+    @FXML
+    Button btnSquare;
 
+    GraphicsContext graphicsContext;
 
     private UdpReceiver udpReceiver;
+
+    public void initialize ()
+    {
+        graphicsContext = canvas.getGraphicsContext2D();
+    }
+
 
     public Controller (){
         udpReceiver = new UdpReceiver(this);
@@ -50,9 +65,16 @@ public class Controller {
     public void clearTable () {
         inputLogTable.getItems().clear();
     }
-    public void buttonCircle(ActionEvent actionEvent) {
+
+    public void selectCircle(ActionEvent actionEvent) {
         System.out.println("Circle button");
-        GraphicsContext
+        // Initialize circle
+        //Change color of circle
+        // Move circle around
+    }
+
+    public void selectSquare(ActionEvent actionEvent) {
+        System.out.println("Circle square");
     }
 
     public void handleMessage(Message message){
@@ -60,5 +82,4 @@ public class Controller {
             inputLogTable.getItems().add(0, message);
         }
     }
-
 }
