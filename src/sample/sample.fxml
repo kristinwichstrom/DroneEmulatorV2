@@ -46,7 +46,7 @@
       </AnchorPane>
       <AnchorPane layoutX="668.0" prefHeight="539.0" prefWidth="293.0" style="-fx-background-color: #FEEFA2;">
          <children>
-            <TableView layoutX="14.0" layoutY="38.0" prefHeight="389.0" prefWidth="269.0" style="-fx-background-color: #EBEBEB; -fx-background-radius: 10 10 10 10;">
+            <TableView fx:id="table" layoutX="14.0" layoutY="38.0" prefHeight="389.0" prefWidth="269.0" style="-fx-background-color: #EBEBEB; -fx-background-radius: 10 10 10 10;">
               <columns>
                 <TableColumn prefWidth="75.0" style="-fx-background-radius: 30 0 0 30; -fx-background-color: #A9D9F9;" text="DATE" />
                 <TableColumn prefWidth="75.0" style="-fx-background-color: #A9D9F9; -fx-background-radius: 0 30 30 0;" text="MESSAGE" />
@@ -72,11 +72,11 @@
                <font>
                   <Font size="12.0" />
                </font></Label>
-            <Label layoutX="145.0" layoutY="473.0" text="127.0.0.1">
+            <Label fx:id="labelIp" layoutX="145.0" layoutY="473.0" text="127.0.0.1">
                <font>
                   <Font size="12.0" />
                </font></Label>
-            <Label layoutX="201.0" layoutY="473.0" text="7007">
+            <Label fx:id="labelConnectionPort" layoutX="201.0" layoutY="473.0" text="7007">
                <font>
                   <Font size="12.0" />
                </font></Label>
@@ -84,16 +84,16 @@
                <font>
                   <Font size="12.0" />
                </font></Label>
-            <Label layoutX="200.0" layoutY="500.0" text="7000">
+            <Label fx:id="labelBroadcastPort" layoutX="200.0" layoutY="500.0" text="7000">
                <font>
                   <Font size="12.0" />
                </font></Label>
-            <Button fx:id="clearTable" layoutX="23.0" layoutY="434.0" mnemonicParsing="false" onAction="#clearTable" prefHeight="20.0" prefWidth="45.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="CLEAR" textFill="#3f5b8f">
+            <Button layoutX="23.0" layoutY="434.0" mnemonicParsing="false" onAction="#clearTable" prefHeight="20.0" prefWidth="45.0" style="-fx-background-color: FEBFB6; -fx-background-radius: 40 40 40 40;" text="CLEAR" textFill="#3f5b8f">
                <font>
                   <Font name="Helvetica Neue Bold" size="9.0" />
                </font>
             </Button>
-            <Label layoutX="19.0" layoutY="16.0" prefHeight="15.0" prefWidth="103.0" style="-fx-background-color: #FD7476;" text="Drone controller data" textFill="WHITE">
+            <Label layoutX="96.0" layoutY="16.0" prefHeight="15.0" prefWidth="103.0" style="-fx-background-color: #FD7476;" text="Drone controller data" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="10.0" />
                </font>
