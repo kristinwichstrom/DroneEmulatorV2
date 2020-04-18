@@ -76,7 +76,7 @@ public class Controller {
         //Change color of circle
         // Move circle around
     }
-//needs fix
+//needs to be fixed
     public void selectSquare(ActionEvent actionEvent) {
         //selectedTool = new DrawDrone();
         System.out.println("Circle square");
