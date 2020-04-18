@@ -7,6 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Controller {
@@ -14,6 +16,7 @@ public class Controller {
     /*
     our FXML elements we need to grab.
      */
+
     @FXML
     TableView<Message> inputLogTable;
     @FXML
@@ -25,7 +28,9 @@ public class Controller {
     @FXML
     Button btnSquare;
 
+    DrawDrone selectedTool;
     GraphicsContext graphicsContext;
+    Color selectedColor = Color.BLACK;
 
     private UdpReceiver udpReceiver;
 
@@ -33,7 +38,6 @@ public class Controller {
     {
         graphicsContext = canvas.getGraphicsContext2D();
     }
-
 
     public Controller (){
         udpReceiver = new UdpReceiver(this);
@@ -74,7 +78,14 @@ public class Controller {
     }
 
     public void selectSquare(ActionEvent actionEvent) {
+        //selectedTool = new DrawDrone();
         System.out.println("Circle square");
+        selectedTool.setColor(selectedColor);
+        selectedTool.drawRectangle(graphicsContext);
+        selectedTool.setX(200);
+        selectedTool.setY(200);
+        selectedTool.setWidth(10);
+        selectedTool.setHeight(10);
     }
 
     public void handleMessage(Message message){

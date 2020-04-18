@@ -40,7 +40,7 @@
                   <Font name="Helvetica Neue Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="buttonDroneOff" alignment="CENTER" layoutX="19.0" layoutY="493.0" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 10 10 10 10;" text="DRONE OFF" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="19.0" layoutY="493.0" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 10 10 10 10;" text="DRONE OFF" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="10.0" />
                </font>
@@ -95,7 +95,7 @@
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="198.0" layoutY="511.0" text="7000">
+            <Label layoutX="198.0" layoutY="512.0" text="7007">
                <font>
                   <Font size="11.0" />
                </font></Label>
