@@ -3,7 +3,7 @@ package sample;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class DrawDrone {
+public class DrawShapes {
     protected int x;
     protected int y;
     protected int width;
@@ -11,7 +11,7 @@ public class DrawDrone {
     private Color color;
     protected String shape;
 
-    public DrawDrone (Color color, int x, int y) {
+    public DrawShapes(Color color, int x, int y) {
         this.height = 50;
         this.width = 50;
         this.color = color;

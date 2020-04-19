@@ -7,9 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class Controller {
 
@@ -28,7 +26,7 @@ public class Controller {
     @FXML
     Button btnSquare;
 
-    DrawDrone selectedTool;
+    DrawShapes selectedTool;
     GraphicsContext graphicsContext;
     Color selectedColor = Color.BLACK;
 
@@ -72,18 +70,16 @@ public class Controller {
 
     public void selectCircle(ActionEvent actionEvent) {
         System.out.println("Circle button");
-        selectedTool = new DrawDrone(Color.LIGHTSALMON,200,200);
+        selectedTool = new DrawShapes(Color.LIGHTSALMON,200,200);
         selectedTool.drawCircle(graphicsContext);
     }
 //needs to be fixed
     public void selectSquare(ActionEvent actionEvent) {
         System.out.println("Square button");
-        selectedTool = new DrawDrone(Color.LAVENDER,200,200);
+        selectedTool = new DrawShapes(Color.LAVENDER,200,200);
         selectedTool.drawRectangle(graphicsContext);
 
-
     }
-
     public void handleMessage(Message message){
         if (inputLogTable != null){
             inputLogTable.getItems().add(0, message);
