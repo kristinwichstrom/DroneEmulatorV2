@@ -3,16 +3,21 @@ package sample;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public abstract class DrawDrone {
+public class DrawDrone {
     protected int x;
     protected int y;
     protected int width;
     protected int height;
     private Color color;
-    protected String Objects;
+    protected String shape;
 
-    public abstract void draw(GraphicsContext graphicsContext);
-
+    public DrawDrone (Color color, int x, int y) {
+        this.height = 50;
+        this.width = 50;
+        this.color = color;
+        this.x=x;
+        this.y=y;
+    }
     public int getX() {
         return x;
     }
@@ -29,12 +34,12 @@ public abstract class DrawDrone {
         this.y = y;
     }
 
-    public String getObjects() {
-        return Objects;
+    public String getShape() {
+        return shape;
     }
 
-    public void setObjects(String objects) {
-        Objects = objects;
+    public void setShape(String shape) {
+        this.shape = shape;
     }
 
     public int getWidth() {
@@ -59,5 +64,13 @@ public abstract class DrawDrone {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+    public void drawCircle(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(this.color);
+        graphicsContext.fillOval(x, y, width, height);
+    }
+    public void drawRectangle(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(this.color);
+        graphicsContext.fillRect(x, y, width, height);
     }
 }

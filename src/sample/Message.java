@@ -25,6 +25,7 @@ public class Message {
         this.message = message;
 
     }
+    
     /*
     Constructor to convert the byte[], to a String.
      */
