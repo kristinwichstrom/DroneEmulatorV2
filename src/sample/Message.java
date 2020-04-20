@@ -4,15 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Message {
-
     private String logTime;
     private String message;
+
+    private String command;
+    private String param1;
+    private String param2;
 
     public Message(String message){
         /*
          Formatter: converts data into a String.
          */
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         /*
         Gets current time
          */
@@ -21,11 +24,20 @@ public class Message {
         Uses the formatter: to set current time to a string
          */
         logTime = formatter.format(currentTime);
-
         this.message = message;
 
+        //Parses string with split
+        String[] messageArray = message.split(" ");
+        command = messageArray[0];
+
+        if (messageArray.length > 1) {
+            param1=messageArray[1];
+            if (messageArray.length > 2) {
+                param2=messageArray[2];
+            }
+        }
     }
-    
+
     /*
     Constructor to convert the byte[], to a String.
      */
@@ -36,8 +48,19 @@ public class Message {
     public String getMessage() {
         return message;
     }
-    public String getLogTime() {
+  public String getLogTime() {
         return logTime;
+    }
+    public String getParam1() {
+        return param1;
+    }
+
+    public String getParam2() {
+        return param2;
+    }
+
+    public String getCommand() {
+        return command;
     }
 
     @Override

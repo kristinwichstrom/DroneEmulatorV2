@@ -65,7 +65,9 @@ public class DrawShapes {
     public void setColor(Color color) {
         this.color = color;
     }
+
     public void drawCircle(GraphicsContext graphicsContext) {
+
         graphicsContext.setFill(this.color);
         graphicsContext.fillOval(x, y, width, height);
     }

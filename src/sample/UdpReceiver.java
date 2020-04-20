@@ -14,7 +14,6 @@ public class UdpReceiver implements Runnable {
     public UdpReceiver (Controller controller){
         this.messageHandler = controller;
     }
-
     private void setupSocket(){
 
         try {
@@ -46,7 +45,7 @@ public class UdpReceiver implements Runnable {
     @Override
     public void run() {
 
-        System.out.println("Stared UdpReceiver Thread");
+        System.out.println("Started UdpReceiver Thread");
         setupSocket();
         do {
             receivePacket();
@@ -63,4 +62,3 @@ public class UdpReceiver implements Runnable {
         this.receiveMessages = receiveMessages;
     }
 }
-
