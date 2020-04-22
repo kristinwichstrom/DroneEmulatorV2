@@ -6,7 +6,6 @@ import java.util.Date;
 public class Message {
     private String logTime;
     private String message;
-
     private String command;
     private String param1;
     private String param2;
@@ -14,13 +13,14 @@ public class Message {
    
     public Message(String message){
 
+        //Object for getting the current time
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Date currentTime = new Date();
         logTime = formatter.format(currentTime);
 
         this.message = message;
 
-        //Parses string with split
+        //Splits the incoming message into separate parts - to be used for controlling the drone's x + y axis and colors
         String[] messageArray = message.split(" ");
 
         command = messageArray[0];

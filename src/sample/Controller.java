@@ -86,18 +86,17 @@ public class Controller {
          */
         switch (command) {
 
+            //Intializes the drone (starts in 200, 200)
             case "init":
                 String x = message.getParam1();
                 String y = message.getParam2();
                 currentX = Double.parseDouble(x);
                 currentY = Double.parseDouble(y);
-
                 updateCanvas();
                 break;
 
             case "moveup":
-                //clearCanvas();
-                if (currentY <= 0) { //Prevents shape to move outside canvas
+                if (currentY <= 50) { //Prevents drone to move outside canvas
                     break;
                 }
                 currentY -= speed;
@@ -105,8 +104,7 @@ public class Controller {
                 break;
 
             case "movedown":
-                //clearCanvas();
-                if (currentY >= 400) {
+                if (currentY >= 350) {
                     break;
                 }
                 currentY += speed;
@@ -114,8 +112,7 @@ public class Controller {
                 break;
 
             case "moveleft":
-                //clearCanvas();
-                if (currentX <= 0) {
+                if (currentX <= 50) {
                     break;
                 }
                 currentX -= speed;
@@ -123,8 +120,7 @@ public class Controller {
                 break;
 
             case "moveright":
-                //clearCanvas();
-                if (currentX >= 400) {
+                if (currentX >= 350) {
                     break;
                 }
                 currentX += speed;
