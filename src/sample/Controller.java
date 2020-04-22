@@ -9,6 +9,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Color;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+
 public class Controller {
 
     /*
@@ -25,13 +28,16 @@ public class Controller {
     Button btnCircle;
     @FXML
     Button btnSquare;
+    @FXML
+    Label droneLabel;
+
 
     DrawShapes selectedTool;
     GraphicsContext graphicsContext;
     private UdpReceiver udpReceiver;
     private double currentX;
     private double currentY;
-    private double speed = 10;
+    private double speed = 60;
 
     public void initialize ()
     {
@@ -59,30 +65,23 @@ public class Controller {
             new Thread(udpReceiver).start();
             toggleBtnDrone.setText("ON");
         }
+
     }
 
     public void clearTable () {
         inputLogTable.getItems().clear();
     }
 
-    public void selectCircle(ActionEvent actionEvent) {
-        System.out.println("Circle button");
-        selectedTool = new DrawShapes(Color.LIGHTSALMON,200,200);
-        selectedTool.drawCircle(graphicsContext);
-    }
-    public void selectSquare(ActionEvent actionEvent) {
-        System.out.println("Square button");
-        selectedTool = new DrawShapes(Color.LAVENDER,200,200);
-        selectedTool.drawRectangle(graphicsContext);
 
-    }
     public void handleMessage(Message message) {
         if (inputLogTable != null) {
             inputLogTable.getItems().add(0, message);
         }
+
         String command = message.getCommand();
         switch (command){
-            case "initialize":
+
+            case "init":
                 String x = message.getParam1();
                 String y = message.getParam2();
                 currentX = Double.parseDouble(x);
@@ -113,16 +112,37 @@ public class Controller {
                 currentX += speed;
                 drawCircle();
                 break;
+
+            case "stop":
+                clearCircle();
+                break;
+
+            case "color 255":
+
         }
     }
-    private void drawCircle () {
+        private void drawCircle () {
         if (graphicsContext != null) {
-            graphicsContext.strokeOval(currentX - 30, currentY - 30, 30, 30);
+            graphicsContext.setFill(Color.LIGHTSALMON);
+            graphicsContext.fillOval(currentX-30, currentY-30, 50, 50);
         }
     }
     private void clearCircle () {
-        if (graphicsContext != null) {
-            graphicsContext.clearRect(currentX - 30, currentY - 30, 40, 40);
+        if (graphicsContext !=null) {
+            graphicsContext.setFill(Color.LIGHTSALMON);
+            graphicsContext.clearRect(currentX-30, currentY-30, 50, 50);
         }
     }
+
+    public void selectCircle(ActionEvent actionEvent) {
+      //  System.out.println("Circle button");
+       // selectedTool = new DrawShapes(Color.LIGHTSALMON,200,200);
+        //selectedTool.drawCircle(graphicsContext);
+    }
+    public void selectSquare(ActionEvent actionEvent) {
+       // System.out.println("Square button");
+        //selectedTool = new DrawShapes(Color.LAVENDER,200,200);
+        //selectedTool.drawRectangle(graphicsContext);
+    }
+
 }

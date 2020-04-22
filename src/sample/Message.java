@@ -10,25 +10,22 @@ public class Message {
     private String command;
     private String param1;
     private String param2;
-
+    private String colorR;
+    private String colorG;
+    private String colorB;
+   
     public Message(String message){
-        /*
-         Formatter: converts data into a String.
-         */
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        /*
-        Gets current time
-         */
         Date currentTime = new Date();
-        /*
-        Uses the formatter: to set current time to a string
-         */
         logTime = formatter.format(currentTime);
+
         this.message = message;
 
         //Parses string with split
         String[] messageArray = message.split(" ");
         command = messageArray[0];
+        System.out.println("length: " + messageArray.length);
 
         if (messageArray.length > 1) {
             param1=messageArray[1];
@@ -48,9 +45,11 @@ public class Message {
     public String getMessage() {
         return message;
     }
+
   public String getLogTime() {
         return logTime;
     }
+
     public String getParam1() {
         return param1;
     }

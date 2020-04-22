@@ -16,23 +16,22 @@
    <children>
       <AnchorPane prefHeight="539.0" prefWidth="175.0" style="-fx-background-color: D8E2FA;">
          <children>
+            <Label alignment="CENTER" layoutY="16.0" opacity="0.95" prefHeight="49.0" prefWidth="173.0" style="-fx-background-radius: 20 20 20 20;" text="CHOOSE SHAPE" textFill="#363636">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="14.0" />
+               </font>
+            </Label>
             <ColorPicker layoutX="25.0" layoutY="389.0" prefHeight="40.0" prefWidth="132.0" promptText="Pick color" style="-fx-background-color: #FEEFA2; -fx-background-radius: 10 10 10 10;" />
-         </children>
-         <Button fx:id="btnCircle" layoutX="38.0" layoutY="96.0" mnemonicParsing="false" onAction="#selectCircle" prefHeight="97.0" prefWidth="98.0" style="-fx-background-radius: 70 70 70 70;" stylesheets="@../CSS/circleButton.css" text="CIRCLE" textFill="WHITE">
-            <font>
-               <Font name="Helvetica Neue Bold" size="17.0" />
-            </font></Button>
-         <Label alignment="CENTER" layoutY="16.0" opacity="0.95" prefHeight="49.0" prefWidth="173.0" style="-fx-background-radius: 20 20 20 20;" text="CHOOSE SHAPE" textFill="#363636">
-            <font>
-               <Font name="Helvetica Neue Bold" size="14.0" />
-            </font>
-         </Label>
-         <Button fx:id="btnSquare" layoutX="43.0" layoutY="246.0" mnemonicParsing="false" onAction="#selectSquare" prefHeight="86.0" prefWidth="87.0" style="-fx-background-radius: 0 0 0 0;" stylesheets="@../CSS/rectButton.css" text="SQUARE" textFill="WHITE">
-            <font>
-               <Font name="Helvetica Neue Bold" size="14.0" />
-            </font>
-         </Button>
-      </AnchorPane>
+            <Button fx:id="btnCircle" layoutX="41.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectCircle" prefHeight="97.0" prefWidth="98.0" style="-fx-background-radius: 70 70 70 70;" stylesheets="@../CSS/circleButton.css" text="CIRCLE" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="17.0" />
+               </font></Button>
+            <Button fx:id="btnSquare" layoutX="47.0" layoutY="232.0" mnemonicParsing="false" onAction="#selectSquare" prefHeight="94.0" prefWidth="94.0" style="-fx-background-radius: 0 0 0 0;" stylesheets="@../CSS/rectButton.css" text="SQUARE" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
       <AnchorPane layoutX="175.0" layoutY="-1.0" prefHeight="540.0" prefWidth="495.0" style="-fx-background-color: #E2E2E2;">
          <children>
             <Canvas fx:id="canvas" height="415.0" layoutX="50.0" layoutY="66.0" width="419.0" />
@@ -70,20 +69,20 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <ToggleButton fx:id="toggleBtnDrone" layoutX="235.0" layoutY="504.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
+            <ToggleButton fx:id="toggleBtnDrone" layoutX="235.0" layoutY="496.0" mnemonicParsing="false" onAction="#toggleBtnDrone" prefHeight="26.0" prefWidth="47.0" style="-fx-background-color: #3F5B85; -fx-background-radius: 90 90 90 90;" text="ON" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </ToggleButton>
-            <Label layoutX="67.0" layoutY="513.0" text="Receiving on:">
+            <Label layoutX="67.0" layoutY="505.0" text="Receiving on:">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="143.0" layoutY="513.0" text="127.0.0.1">
+            <Label layoutX="143.0" layoutY="505.0" text="127.0.0.1">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="199.0" layoutY="513.0" text="8000">
+            <Label layoutX="199.0" layoutY="505.0" text="8000">
                <font>
                   <Font size="11.0" />
                </font></Label>
