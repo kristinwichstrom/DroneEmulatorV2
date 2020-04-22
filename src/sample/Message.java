@@ -10,9 +10,7 @@ public class Message {
     private String command;
     private String param1;
     private String param2;
-    private String colorR;
-    private String colorG;
-    private String colorB;
+    private String param3;
    
     public Message(String message){
 
@@ -24,6 +22,7 @@ public class Message {
 
         //Parses string with split
         String[] messageArray = message.split(" ");
+
         command = messageArray[0];
         System.out.println("length: " + messageArray.length);
 
@@ -31,6 +30,9 @@ public class Message {
             param1=messageArray[1];
             if (messageArray.length > 2) {
                 param2=messageArray[2];
+                if (messageArray.length > 3) {
+                    param3 = messageArray[3];
+                }
             }
         }
     }
@@ -57,6 +59,11 @@ public class Message {
     public String getParam2() {
         return param2;
     }
+
+    public String getParam3() {
+        return param3;
+    }
+
 
     public String getCommand() {
         return command;

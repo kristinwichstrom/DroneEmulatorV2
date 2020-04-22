@@ -1,32 +1,32 @@
-package sample;
+/*package sample;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class DrawShapes {
-    protected int x;
-    protected int y;
-    protected int width;
-    protected int height;
+    protected double x;
+    protected double y;
+    protected double width;
+    protected double height;
     private Color color;
     protected String shape;
 
-    public DrawShapes(Color color, int x, int y) {
+    public DrawShapes(Color color, double x, double y) {
         this.height = 50;
         this.width = 50;
         this.color = color;
         this.x=x;
         this.y=y;
     }
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -42,7 +42,7 @@ public class DrawShapes {
         this.shape = shape;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -50,7 +50,7 @@ public class DrawShapes {
         this.width = width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -75,4 +75,9 @@ public class DrawShapes {
         graphicsContext.setFill(this.color);
         graphicsContext.fillRect(x, y, width, height);
     }
+    public void clearCanvas (GraphicsContext graphicsContext) {
+        graphicsContext.setFill(this.color);
+        graphicsContext.clearRect(x,y,width,height);
+    }
 }
+*/

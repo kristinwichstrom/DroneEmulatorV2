@@ -3,13 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="960.0" style="-fx-background-color: #FD7464;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -21,16 +21,18 @@
                   <Font name="Helvetica Neue Bold" size="14.0" />
                </font>
             </Label>
-            <ColorPicker layoutX="25.0" layoutY="389.0" prefHeight="40.0" prefWidth="132.0" promptText="Pick color" style="-fx-background-color: #FEEFA2; -fx-background-radius: 10 10 10 10;" />
-            <Button fx:id="btnCircle" layoutX="41.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectCircle" prefHeight="97.0" prefWidth="98.0" style="-fx-background-radius: 70 70 70 70;" stylesheets="@../CSS/circleButton.css" text="CIRCLE" textFill="WHITE">
+            <Button fx:id="btnCircle" layoutX="34.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCircle" prefHeight="97.0" prefWidth="98.0" style="-fx-background-radius: 70 70 70 70;" stylesheets="@../CSS/circleButton.css" text="CIRCLE" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="17.0" />
                </font></Button>
-            <Button fx:id="btnSquare" layoutX="47.0" layoutY="232.0" mnemonicParsing="false" onAction="#selectSquare" prefHeight="94.0" prefWidth="94.0" style="-fx-background-radius: 0 0 0 0;" stylesheets="@../CSS/rectButton.css" text="SQUARE" textFill="WHITE">
+            <Button fx:id="btnSquare" layoutX="38.0" layoutY="272.0" mnemonicParsing="false" onAction="#selectSquare" prefHeight="94.0" prefWidth="94.0" style="-fx-background-radius: 0 0 0 0;" stylesheets="@../CSS/rectButton.css" text="SQUARE" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="14.0" />
                </font>
             </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="23.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="70.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="120.0" layoutY="459.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
          </children></AnchorPane>
       <AnchorPane layoutX="175.0" layoutY="-1.0" prefHeight="540.0" prefWidth="495.0" style="-fx-background-color: #E2E2E2;">
          <children>
@@ -78,11 +80,11 @@
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="143.0" layoutY="505.0" text="127.0.0.1">
+            <Label fx:id="ipNumber" layoutX="143.0" layoutY="505.0" text="127.0.0.1">
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label layoutX="199.0" layoutY="505.0" text="8000">
+            <Label fx:id="portNumber" layoutX="199.0" layoutY="505.0" text="8000">
                <font>
                   <Font size="11.0" />
                </font></Label>

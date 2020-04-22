@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 public class Controller {
 
     /*
-    our FXML elements we need to grab.
+    Sets our necessary FXML
      */
 
     @FXML
@@ -31,35 +31,36 @@ public class Controller {
     @FXML
     Label droneLabel;
 
-
-    DrawShapes selectedTool;
     GraphicsContext graphicsContext;
     private UdpReceiver udpReceiver;
-    private double currentX;
-    private double currentY;
-    private double speed = 60;
+    private double currentX = 200;
+    private double currentY = 200;
+    private double speed = 30;
+    int color1 = 0;
+    int color2 = 0;
+    int color3 = 0;
+    String shape = "circle";
 
-    public void initialize ()
-    {
+    public void initialize() {
         graphicsContext = canvas.getGraphicsContext2D();
     }
 
-    public Controller (){
+    public Controller() {
         udpReceiver = new UdpReceiver(this);
         new Thread(udpReceiver).start();
     }
 
     public void toggleBtnDrone(ActionEvent actionEvent) {
         System.out.println("Toggle Drone button");
-        if (udpReceiver.isReceiveMessages()){
+        if (udpReceiver.isReceiveMessages()) {
             /*
-            Kill udpReceiver thread
+            Stopping thread
              */
             udpReceiver.setReceiveMessages(false);
             toggleBtnDrone.setText("OFF");
         } else {
-            /*
-            Start udpReceiver thread
+          /*
+            Starting thread
              */
             udpReceiver.setReceiveMessages(true);
             new Thread(udpReceiver).start();
@@ -68,7 +69,7 @@ public class Controller {
 
     }
 
-    public void clearTable () {
+    public void clearTable() {
         inputLogTable.getItems().clear();
     }
 
@@ -79,70 +80,99 @@ public class Controller {
         }
 
         String command = message.getCommand();
-        switch (command){
+
+        /*
+        The switch creates a case for each command (message)
+         */
+        switch (command) {
 
             case "init":
                 String x = message.getParam1();
                 String y = message.getParam2();
                 currentX = Double.parseDouble(x);
                 currentY = Double.parseDouble(y);
-                drawCircle();
+
+                updateCanvas();
                 break;
 
             case "moveup":
-                clearCircle();
+                //clearCanvas();
+                if (currentY <= 0) { //Prevents shape to move outside canvas
+                    break;
+                }
                 currentY -= speed;
-                drawCircle();
+                updateCanvas();
                 break;
 
             case "movedown":
-                clearCircle();
+                //clearCanvas();
+                if (currentY >= 400) {
+                    break;
+                }
                 currentY += speed;
-                drawCircle();
+                updateCanvas();
                 break;
 
             case "moveleft":
-                clearCircle();
+                //clearCanvas();
+                if (currentX <= 0) {
+                    break;
+                }
                 currentX -= speed;
-                drawCircle();
+                updateCanvas();
                 break;
 
             case "moveright":
-                clearCircle();
+                //clearCanvas();
+                if (currentX >= 400) {
+                    break;
+                }
                 currentX += speed;
-                drawCircle();
+                updateCanvas();
                 break;
 
             case "stop":
-                clearCircle();
+                //clearCanvas();
                 break;
 
-            case "color 255":
-
+            case "color":
+                color1 = Integer.parseInt(message.getParam1());
+                color2 = Integer.parseInt(message.getParam2());
+                color3 = Integer.parseInt(message.getParam3());
+                // System.out.println(message.getParam1() + " " + message.getParam2() + " " + message.getParam3());
+                graphicsContext.setFill(Color.rgb(color1, color2, color3));
+                updateCanvas();
         }
     }
-        private void drawCircle () {
+
+    /*
+    Method for updating canvas (shape) for each move
+     */
+    private void updateCanvas() {
         if (graphicsContext != null) {
-            graphicsContext.setFill(Color.LIGHTSALMON);
-            graphicsContext.fillOval(currentX-30, currentY-30, 50, 50);
-        }
-    }
-    private void clearCircle () {
-        if (graphicsContext !=null) {
-            graphicsContext.setFill(Color.LIGHTSALMON);
-            graphicsContext.clearRect(currentX-30, currentY-30, 50, 50);
+            graphicsContext.clearRect(0, 0, 1000, 1000);
+            if (shape.equals("circle")) { // If user clicks circle button
+                graphicsContext.fillOval(currentX, currentY, 50, 50);
+            } else {
+                graphicsContext.fillRect(currentX, currentY, 50, 50);
+            }
+
         }
     }
 
+    /*
+    When Circle button is selected
+     */
     public void selectCircle(ActionEvent actionEvent) {
-      //  System.out.println("Circle button");
-       // selectedTool = new DrawShapes(Color.LIGHTSALMON,200,200);
-        //selectedTool.drawCircle(graphicsContext);
-    }
-    public void selectSquare(ActionEvent actionEvent) {
-       // System.out.println("Square button");
-        //selectedTool = new DrawShapes(Color.LAVENDER,200,200);
-        //selectedTool.drawRectangle(graphicsContext);
+        shape = "circle";
+        updateCanvas();
     }
 
+    /*
+    When Square button is selected
+     */
+    public void selectSquare(ActionEvent actionEvent) {
+        shape = "rectangle";
+        updateCanvas();
+    }
 }

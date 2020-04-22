@@ -35,6 +35,7 @@ public class UdpReceiver implements Runnable {
             message = new Message(packet.getData(), packet.getLength());
             System.out.println("received: "+ message);
             messageHandler.handleMessage(message);
+            packet.getSocketAddress();
 
         } catch (IOException e) {
             e.printStackTrace();
