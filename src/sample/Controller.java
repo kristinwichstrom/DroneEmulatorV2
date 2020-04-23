@@ -40,16 +40,17 @@ public class Controller {
     int color2 = 0;
     int color3 = 0;
     String shape = "circle";
+    //private UdpBroadcaster broadcastServer; //Ny
 
     public void initialize() {
         graphicsContext = canvas.getGraphicsContext2D();
     }
 
     public Controller() {
+
         udpReceiver = new UdpReceiver(this);
         new Thread(udpReceiver).start();
     }
-
     public void toggleBtnDrone(ActionEvent actionEvent) {
         System.out.println("Toggle Drone button");
         if (udpReceiver.isReceiveMessages()) {
@@ -86,7 +87,7 @@ public class Controller {
          */
         switch (command) {
 
-            //Intializes the drone (starts in 200, 200)
+            // Sets the drone in center (starts in 200, 200)
             case "init":
                 String x = message.getParam1();
                 String y = message.getParam2();
@@ -96,7 +97,7 @@ public class Controller {
                 break;
 
             case "moveup":
-                if (currentY <= 50) { //Prevents drone to move outside canvas
+                if (currentY <= 50) { //Prevents drone from moving outside canvas
                     break;
                 }
                 currentY -= speed;
@@ -128,7 +129,6 @@ public class Controller {
                 break;
 
             case "stop":
-                //clearCanvas();
                 break;
 
             case "color":
@@ -170,5 +170,8 @@ public class Controller {
     public void selectSquare(ActionEvent actionEvent) {
         shape = "rectangle";
         updateCanvas();
+    }
+
+    public void receivePacket(Message message) {
     }
 }
