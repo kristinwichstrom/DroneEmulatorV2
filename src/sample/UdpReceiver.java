@@ -6,7 +6,7 @@ import java.net.*;
 public class UdpReceiver implements Runnable {
     private int inPort = 8000; //The port Drone Emulator listens to
     private int outPort = 7007; // Sends message back to this port
-    private DatagramSocket socket;
+    private DatagramSocket receiveSocket;
     private boolean receiveMessages = true;
     private Controller messageHandler;
 
@@ -18,7 +18,7 @@ public class UdpReceiver implements Runnable {
     private void setupSocket() {
         try {
 
-            socket = new DatagramSocket(inPort);
+            receiveSocket = new DatagramSocket(inPort);
 
         } catch (SocketException e) {
             System.out.println("IOEXCEPTION: Could not send to: " + inPort);
@@ -26,7 +26,6 @@ public class UdpReceiver implements Runnable {
         }
     }
 
-    //NY
     public void replyMessage() {
         do {
             Message msg = receivePacket();
@@ -34,7 +33,7 @@ public class UdpReceiver implements Runnable {
         } while (receiveMessages);
     }
 
-    //NY
+
     public void sendMessage(String string) {
         try {
             sendMessage(string.getBytes(), InetAddress.getByName("255.255.255.255"));
@@ -52,7 +51,7 @@ public class UdpReceiver implements Runnable {
             e.printStackTrace();
         }
         try {
-            socket.send(packet);
+            receiveSocket.send(packet);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +63,7 @@ public class UdpReceiver implements Runnable {
         Message message = null;
         try {
 
-            socket.receive(packet);
+            receiveSocket.receive(packet);
             message = new Message(packet.getData(), packet.getLength(), packet.getAddress());
             System.out.println("received: " + message);
             messageHandler.handleMessage(message);
@@ -81,34 +80,9 @@ public class UdpReceiver implements Runnable {
 
     @Override
     public void run() {
-
         replyMessage();
 
-       /* System.out.println("Started UdpReceiver Thread");
-         setupSocket();
-         do {
-            receivePacket();
-          }
-         while (receiveMessages);
-         socket.close();
-
-        */
     }
-
-   /* public void connectionLoop() { //Does the same as replyMessage!
-
-        do
-        {
-            System.out.println("Started UdpConnector Thread");
-            replyMessage();
-        }
-        while(isReceiveMessages());
-        socket.close();
-    }
-
-    */
-
-
     public boolean isReceiveMessages() {
         return receiveMessages;
     }
